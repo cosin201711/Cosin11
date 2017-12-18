@@ -10,5 +10,6 @@ class AdminstersController < ApplicationController
 
 	def edit_user_details
 		@user = User.find(params[:id])
+		# adminのデータ持ってくるのを記述する
 	end
 end

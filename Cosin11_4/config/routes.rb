@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :orders, only:[:show, :index]
   resources :order_items
   resources :carts, only: [:show]
-  
+  resources :users, only: [:show, :edit, :update]
+
   root "top#index"
 end

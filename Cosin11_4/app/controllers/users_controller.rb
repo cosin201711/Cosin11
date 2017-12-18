@@ -14,7 +14,9 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		
+		@user.update(user_params)
+		# sign_in(@user, bypass: true) if current_user.id == @user.id
+        redirect_to edit_user_path(@user.id), notice: "更新しました。"
 	end
 
 	def destroy
@@ -22,6 +24,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :phone, :leave, :update_at)
+		params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :phone, :leave, :update_at, :email, :password)
 	end
+
 end

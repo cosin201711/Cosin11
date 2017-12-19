@@ -49,6 +49,7 @@ class ItemsController < ApplicationController
 	  							   :stock, 
 	  							   :luanch_date, 
 	  							   :editor, 
-	  							   :item_status)
+	  							   :item_status
+	  							   )
 	end
 end

@@ -1,11 +1,17 @@
 class ItemsController < ApplicationController
 	def new
-		@Item = Item.new
+		@item = Item.new
 	end
 
 	def create
 		@item = Item.new(item_params)
-		redirect_to items_path
+		# binding.pry
+		@item.adminster_id = current_adminster.id
+		if @item.save
+		  redirect_to items_path
+		else
+        render 'new'
+        end
 	end
 
 	def edit
@@ -33,22 +39,10 @@ class ItemsController < ApplicationController
 	end
 
 	def destroy
-		
 	end
 
 	private
 	def item_params
-	  params.require(:item).permit(:adminster_id, 
-	  							   :artist_name, 
-	  							   :artist_name_kana, 
-	  							   :album_name, 
-	  							   :price, 
-	  							   :label_name, 
-	  							   :genre, 
-	  							   :cd_image, 
-	  							   :stock, 
-	  							   :luanch_date, 
-	  							   :editor, 
-	  							   :item_status)
+	  params.require(:item).permit(:adminster_id,:album_name, :price, :label_name, :genre, :luanch_date, :cd_image)
 	end
 end

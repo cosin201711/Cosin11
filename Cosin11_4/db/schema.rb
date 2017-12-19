@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214094615) do
+ActiveRecord::Schema.define(version: 20171219112727) do
 
   create_table "adminsters", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20171214094615) do
     t.integer "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 1, default: 0, null: false
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -117,7 +118,7 @@ ActiveRecord::Schema.define(version: 20171214094615) do
     t.string "post_code"
     t.string "address"
     t.string "phone"
-    t.integer "leave"
+    t.boolean "leave"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

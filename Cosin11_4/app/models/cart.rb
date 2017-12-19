@@ -1,4 +1,5 @@
 class Cart < ApplicationRecord
-	has_many :items
+	include ActiveRecord::Calculations
+	belongs_to :item
 	belongs_to :user
 end

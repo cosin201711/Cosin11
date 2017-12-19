@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
+		@orders = @user.orders.page(params[:page]).reverse_order
 	end
 
 	def index
@@ -18,7 +19,11 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		
+		user = User.find(params[:id])
+        user.update_attribute(:leave,false)
+        # redirect_to root_path, notice: "またのご利用しております！"
+        sign_out(current_account)
+        redirect_to root_path
 	end
 
 	def user_params
